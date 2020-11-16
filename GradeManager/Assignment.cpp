@@ -1,40 +1,30 @@
-#include "Assignment.h"
 #include <string>
 
-Assignment::Assignment( std::string name, double score, double maxScore, std::string category ) {}
+#include "Assignment.h"
 
-std::string Assignment::name()
-{
-	return std::string();
-}
 
-void Assignment::name(std::string newName)
-{
-}
 
-double Assignment::score()
-{
-	return 0.0;
-}
+// Constructor
+Assignment::Assignment( std::string name, double score, double maxScore, std::string category ) : _name( name ), _score( score ), _maxScore( maxScore ), _category( category ) {}
 
-void Assignment::score(double newScore)
-{
-}
+// Queries
+std::string Assignment::name() const { return _name; }
+double      Assignment::score() const { return _score; }
+double      Assignment::maxScore() const { return _maxScore; }
+std::string Assignment::category() const { return _category; }
 
-double Assignment::maxScore()
-{
-	return 0.0;
-}
+// Mutators
+void Assignment::name( std::string newName ) { _name = newName; }
+void Assignment::score( double newScore ) { _score = newScore; }
+void Assignment::maxScore( double newMaxScore ) { _maxScore = newMaxScore; }
+void Assignment::category( std::string newCategory ) { _category = newCategory; }
 
-void Assignment::maxScore(double newMaxScore)
+// Operators
+std::ostream & operator<<( std::ostream & stream, const Assignment & assignment )
 {
-}
+  const std::string delim  = ": ";
+  const std::string delim2 = "/";
+  stream << assignment.name() << delim << std::to_string(assignment.score()) << delim2 << std::to_string(assignment.maxScore());
 
-std::string Assignment::category()
-{
-	return std::string();
-}
-
-void Assignment::category(std::string newCategory)
-{
+  return stream;
 }
