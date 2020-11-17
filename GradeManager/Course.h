@@ -1,4 +1,5 @@
 #pragma once
+
 #include <map>
 #include <string>
 #include <vector>
@@ -15,7 +16,7 @@ public:
   using CategoryGrades  = std::map<std::string /*Category*/, double /*Score*/>;
 
   // Constructor
-  Course( std::string name, std::map<std::string, double> categories );
+  Course( std::string name, std::map<std::string, double> categories = {} );
 
   // Queries
   std::map<std::string, double>     categories();     // Returns map of categories and weights
@@ -29,7 +30,8 @@ public:
   void removeAssignment( std::string name );                     // Remove an assignment from the course
 
   // Operations
-  void calcGrade();    // Print out the total grade
+  void calcGrade();            // Print out the total grade
+  void calcUncategorized();    // Calculate the Weight of Uncategorized
 
 private:
   std::string     _name;

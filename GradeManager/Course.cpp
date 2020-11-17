@@ -4,7 +4,7 @@
 #include "Course.h"
 
 // Constructor
-Course::Course( std::string name, std::map<std::string, double> categories ) : _name( name ), _categories( categories ) {}
+Course::Course( std::string name, std::map<std::string, double> categories ) : _name( name ), _categories( categories ) { calcUncategorized(); }
 
 // Queries
 std::map<std::string, double>     Course::categories() { return _categories; }
@@ -13,6 +13,12 @@ std::map<std::string, Assignment> Course::assignments() { return _assignments; }
 // Mutators
 void Course::addCategory( std::string catName, double weight )
 {
+  if( weight < 0 )
+  {
+    std::cout << "Weights must be positive!";
+    return;
+  }
+
   if( _categories.find( catName ) == _categories.end() )
   {
     _categories[catName] = weight;
@@ -21,6 +27,7 @@ void Course::addCategory( std::string catName, double weight )
   {
     std::cout << "There is already a category with name " << catName << '\n';
   }
+  calcUncategorized();
 }
 
 void Course::removeCategory( std::string catName )
@@ -33,10 +40,17 @@ void Course::removeCategory( std::string catName )
   {
     _categories.erase( catName );
   }
+  calcUncategorized();
 }
 
 void Course::editCategory( std::string catName, double newWeight )
 {
+  if( newWeight < 0 )
+  {
+    std::cout << "Weights must be positive!";
+    return;
+  }
+
   auto it = _categories.find( catName );
   if( it == _categories.end() )
   {
@@ -46,6 +60,7 @@ void Course::editCategory( std::string catName, double newWeight )
   {
     it->second = newWeight;
   }
+  calcUncategorized();
 }
 
 void Course::addAssignment( Assignment assign )
@@ -72,11 +87,14 @@ void Course::removeAssignment( std::string name )
   }
 }
 
+// Operations
 void Course::calcGrade()
 {
   /// Separate all assignments into categories
   /// For each category print out name and points off all assignment, overall category grade, and how much that category adds to final grade
   /// Sum up total grade and print it out to user
+
+  if( _assignments.empty() ) { return; }
 
   Categories gradeCategories;
   double     overallPercent = 0;
@@ -90,7 +108,7 @@ void Course::calcGrade()
     else
     {
       gradeCategories["Uncategorized"].push_back( assignment );
-      std::cout << assignment.name() << " was not in a known category and will be added to \"Uncategorized\" \n";
+      std::cout << assignment.name() << " was not in a known category and will be added to \"Uncategorized\" \n\n\n";
     }
   }
 
@@ -109,11 +127,37 @@ void Course::calcGrade()
     }
     double percent      = ( totalPoints / maxPoints ) * 100;
     double totalPercent = percent * ( weight / 100 );
-    std::cout << std::string( 25, '-' ) << '\n'
-              << "Total Score is" << totalPoints << '/' << maxPoints << " = " << percent << "%\n"
-              << "Which is " << totalPercent << "% of the final grade \n\n\n";
+    std::cout <<'\t'<< std::string( 25, '-' ) << '\n'
+              << "\tTotal Score is " << totalPoints << '/' << maxPoints << " = " << percent << "%\n"
+              << "\tWhich is " << totalPercent << "% of the final grade \n\n\n";
     overallPercent += totalPercent;
   }
 
   std::cout << "The Final Grade is " << overallPercent << "% \n\n";
+}
+
+void Course::calcUncategorized()
+{
+  if( _categories.empty() )
+  {
+    _categories["Uncategorized"] = 100;
+    return;
+  }
+
+  double totalWeights = 0;
+  for( auto & [category, weight] : _categories )
+  {
+    if( category == "Uncategorized" ) continue;
+    totalWeights += weight;
+  }
+  double uncatWeight = 100 - totalWeights;
+  if( uncatWeight >= 0 && uncatWeight <= 100 )
+  {
+    _categories["Uncategorized"] = uncatWeight;
+  }
+  else
+  {
+    _categories["Uncategorized"] = 0;
+    std::cout << "Categories add up to more than 100!\n";
+  }
 }
