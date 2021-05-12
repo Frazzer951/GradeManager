@@ -5,7 +5,6 @@
 
 #include "Assignment.h"
 
-
 // Constructor
 Assignment::Assignment( std::string_view name, double score, double maxScore, std::string_view category ) : _name( name ), _score( score ), _maxScore( maxScore ), _category( category ) {}
 

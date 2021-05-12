@@ -13,7 +13,6 @@ public:
   using CategoryWeights = std::map<std::string /*Category*/, double /*Weight*/>;
   using Assignments     = std::map<std::string /*Name    */, Assignment>;
   using Categories      = std::map<std::string /*Category*/, std::vector<Assignment>>;
-  using CategoryGrades  = std::map<std::string /*Category*/, double /*Score*/>;
 
   // Constructor
   Course( std::string name, std::map<std::string, double> categories = {} );
@@ -27,6 +26,7 @@ public:
   void removeCategory( std::string catName );                    // Remove a Category
   void editCategory( std::string catName, double newWeight );    // Change a Category's weight
   void addAssignment( Assignment assign );                       // Add an assignment to the course
+  void addAssignments( std::vector<Assignment> assigns );        // Add multiple assignments to the course
   void removeAssignment( std::string name );                     // Remove an assignment from the course
 
   // Operations

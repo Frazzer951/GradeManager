@@ -75,6 +75,14 @@ void Course::addAssignment( Assignment assign )
   }
 }
 
+void Course::addAssignments( std::vector<Assignment> assigns )
+{
+  for( auto & assign : assigns )
+  {
+    addAssignment( assign );
+  }
+}
+
 void Course::removeAssignment( std::string name )
 {
   if( _assignments.find( name ) == _assignments.end() )
@@ -127,7 +135,7 @@ void Course::calcGrade()
     }
     double percent      = ( totalPoints / maxPoints ) * 100;
     double totalPercent = percent * ( weight / 100 );
-    std::cout <<'\t'<< std::string( 25, '-' ) << '\n'
+    std::cout << '\t' << std::string( 25, '-' ) << '\n'
               << "\tTotal Score is " << totalPoints << '/' << maxPoints << " = " << percent << "%\n"
               << "\tWhich is " << totalPercent << "% of the final grade \n\n\n";
     overallPercent += totalPercent;
@@ -158,6 +166,6 @@ void Course::calcUncategorized()
   else
   {
     _categories["Uncategorized"] = 0;
-    std::cout << "Categories add up to more than 100!\n";
+    std::cout << "Category Weights add up to more than 100!\n";
   }
 }
