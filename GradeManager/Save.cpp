@@ -6,9 +6,19 @@
 #include "Course.h"
 #include "Save.h"
 
+std::string spaceToUnderscore( std::string str )
+{
+  for( int i = 0; i < str.length(); i++ )
+  {
+    if( str[i] == ' ' )
+      str[i] = '_';
+  }
+  return str;
+}
+
 void saver::saveCourse( Course c, std::string filename )
 {
-  if( filename == "" ) filename = c.name() + ".course";
+  if( filename == "" ) filename = spaceToUnderscore( c.name() ) + ".course";
   std::ofstream courseFile;
   courseFile.open( filename );
 
@@ -26,7 +36,7 @@ void saver::saveCourse( Course c, std::string filename )
   // Assignments
   for( auto & [name, assignment] : c.assignments() )
   {
-    courseFile << std::quoted( assignment.name() ) << ','
+    courseFile << std::quoted( assignment.name() ) << ", "
                << assignment.score() << '/'
                << assignment.maxScore() << ", "
                << std::quoted( assignment.category() ) << '\n';

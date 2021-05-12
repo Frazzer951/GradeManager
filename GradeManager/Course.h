@@ -15,7 +15,7 @@ public:
   using Categories      = std::map<std::string /*Category*/, std::vector<Assignment>>;
 
   // Constructor
-  Course( std::string name, std::map<std::string, double> categories = {} );
+  Course( std::string name = "", std::map<std::string, double> categories = {} );
 
   // Queries
   std::string     name();           // Return the name of the course
