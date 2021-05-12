@@ -1,3 +1,4 @@
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <string_view>
@@ -38,10 +39,10 @@ std::istream & operator>>( std::istream & stream, Assignment & assignment )
   char       delimiter  = ',';
   char       delimiter2 = '/';
 
-  stream >> temp._name >> delimiter
+  stream >> std::quoted( temp._name ) >> delimiter
       >> temp._score >> delimiter2
       >> temp._maxScore >> delimiter
-      >> temp._category;
+      >> std::quoted( temp._category );
 
   if( stream ) assignment = std::move( temp );
   return stream;

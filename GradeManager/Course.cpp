@@ -7,8 +7,9 @@
 Course::Course( std::string name, std::map<std::string, double> categories ) : _name( name ), _categories( categories ) { calcUncategorized(); }
 
 // Queries
-std::map<std::string, double>     Course::categories() { return _categories; }
-std::map<std::string, Assignment> Course::assignments() { return _assignments; }
+std::string             Course::name() { return _name; }
+Course::CategoryWeights Course::categories() { return _categories; }
+Course::Assignments     Course::assignments() { return _assignments; }
 
 // Mutators
 void Course::addCategory( std::string catName, double weight )

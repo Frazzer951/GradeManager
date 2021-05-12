@@ -18,8 +18,9 @@ public:
   Course( std::string name, std::map<std::string, double> categories = {} );
 
   // Queries
-  std::map<std::string, double>     categories();     // Returns map of categories and weights
-  std::map<std::string, Assignment> assignments();    // Returns map of assignments
+  std::string     name();           // Return the name of the course
+  CategoryWeights categories();     // Returns map of categories and weights
+  Assignments     assignments();    // Returns map of assignments
 
   // Mutator
   void addCategory( std::string catName, double weight );        // Add a Category

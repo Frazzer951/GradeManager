@@ -1,5 +1,6 @@
 #include "Assignment.h"
 #include "Course.h"
+#include "Save.h"
 
 int main()
 {
@@ -49,4 +50,10 @@ int main()
 
   // Calculate the grade
   compSci.calcGrade();
+
+  saver::saveCourse( compSci );
+
+  auto test = saver::loadCourse( "Computer Science.course" );
+
+  test.calcGrade();
 }
