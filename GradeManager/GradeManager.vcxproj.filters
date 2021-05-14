@@ -39,4 +39,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.travis.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Menu.txt" />
+  </ItemGroup>
 </Project>
