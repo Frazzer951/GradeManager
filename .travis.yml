@@ -2,6 +2,13 @@ dist: trusty
 sudo: false
 language: cpp
 
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchaing-r-test
+    packages:
+      - g++-5
+
 script:
-  - cmake .
+  - CXX=/user.bin/g++-5 CC=/usr/bin/gcc-5 cmake .
   - cmake --buld . -- -j2
