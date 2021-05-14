@@ -41,11 +41,7 @@ void test()
   // Calculate the grade
   compSci.calcGrade();
 
-  saver::saveCourse( compSci );
-
-  auto test = saver::loadCourse( "Computer Science.course" );
-
-  test.calcGrade();
+  saver::saveCourse( compSci, "cs.course" );
 }
 
 Course get_Course()
@@ -85,6 +81,11 @@ Course get_Course()
       return Course( input );
 
       break;
+    }
+    else if( input == "test" )
+    {
+      test();
+      return Course("test");
     }
     else
     {
