@@ -1,4 +1,7 @@
+dist: trusty
+sudo: false
 language: cpp
-compiler:
-  - clang
-  - gcc
+
+script:
+  - cmake .
+  - cmake --buld . -- -j2
