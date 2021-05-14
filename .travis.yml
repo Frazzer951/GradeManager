@@ -2,7 +2,7 @@ dist: xenial
 language: cpp
 
 before_install:
-  -sudo apt-get install g++ -y
+  - sudo apt-get -y install g++
 
 script:
   - CXX=/user/bin/g++ CC=/usr/bin/gcc cmake .
