@@ -1,6 +1,9 @@
 dist: xenial
 language: cpp
 
+before_install:
+  - sudo apt-get -y install gcc
+
 compiler:
   - clang
   - gcc
