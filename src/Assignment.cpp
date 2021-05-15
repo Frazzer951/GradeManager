@@ -1,13 +1,12 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
-#include <string_view>
 #include <utility>
 
 #include "Assignment.hpp"
 
 // Constructor
-Assignment::Assignment( std::string_view name, double score, double maxScore, std::string_view category ) : _name( name ), _score( score ), _maxScore( maxScore ), _category( category ) {}
+Assignment::Assignment( std::string name, double score, double maxScore, std::string category ) : _name( name ), _score( score ), _maxScore( maxScore ), _category( category ) {}
 
 // Queries
 std::string Assignment::name() const { return _name; }
@@ -16,10 +15,10 @@ double      Assignment::maxScore() const { return _maxScore; }
 std::string Assignment::category() const { return _category; }
 
 // Mutators
-void Assignment::name( std::string_view newName ) { _name = newName; }
+void Assignment::name( std::string newName ) { _name = newName; }
 void Assignment::score( double newScore ) { _score = newScore; }
 void Assignment::maxScore( double newMaxScore ) { _maxScore = newMaxScore; }
-void Assignment::category( std::string_view newCategory ) { _category = newCategory; }
+void Assignment::category( std::string newCategory ) { _category = newCategory; }
 
 // Operators
 std::ostream & operator<<( std::ostream & stream, const Assignment & assignment )

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include <string_view>
 
 class Assignment
 {
@@ -11,10 +10,10 @@ public:
   friend std::istream & operator>>( std::istream & stream, Assignment & assignment );
 
   // Constructor
-  Assignment( std::string_view name     = {},
-              double           score    = 0.0,
-              double           maxScore = 0.0,
-              std::string_view category = {} );
+  Assignment( std::string name     = "",
+              double      score    = 0.0,
+              double      maxScore = 0.0,
+              std::string category = "" );
 
   // Queries
   std::string name() const;        // Get the name
@@ -23,10 +22,10 @@ public:
   double      maxScore() const;    // Get the max score
 
   // Mutators
-  void name( std::string_view newName );            // Change the name
-  void score( double newScore );                    // Change the score
-  void maxScore( double newMaxScore );              // Change the max score
-  void category( std::string_view newCategory );    // Change the category
+  void name( std::string newName );            // Change the name
+  void score( double newScore );               // Change the score
+  void maxScore( double newMaxScore );         // Change the max score
+  void category( std::string newCategory );    // Change the category
 
 private:
   std::string _name;
