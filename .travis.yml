@@ -1,12 +1,7 @@
 dist: xenial
 language: cpp
 
-before_install:
-  - sudo apt-get -y install libstdc++
-
-compiler:
-  - clang
-  - gcc
+compiler: gcc
 
 script:
   - cmake .
