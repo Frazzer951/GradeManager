@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.0.0)
 project(Tests)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_C_STANDARD 99)
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
