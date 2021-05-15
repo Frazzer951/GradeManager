@@ -8,5 +8,4 @@ compiler:
 
 script:
   - cmake .
-  - cmake --buld .
-  - ctest -R Tests
+  - cmake --build . --target check
