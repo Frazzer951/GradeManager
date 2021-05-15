@@ -2,8 +2,8 @@ dist: xenial
 language: cpp
 
 before_install:
-  - sudo apt-get -y install g++-7 gcc-7
+  - sudo apt-get -y install g++ gcc
 
 script:
-  - CXX=g++-7 CC=gcc-7 cmake .
+  - CXX=g++ CC=gcc cmake .
   - cmake --build .
