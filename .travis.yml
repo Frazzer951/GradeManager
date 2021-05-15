@@ -2,6 +2,8 @@ dist: xenial
 language: cpp
 
 script:
-  - CXX=g++ CC=gcc cmake .
+  - mkdir build
+  - cd build
+  - CXX=g++ CC=gcc cmake ..
   - cmake --buld . --target tests
   - ctest
