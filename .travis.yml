@@ -7,6 +7,6 @@ compiler:
   - gcc
 
 script:
-  - cmake ..
+  - cmake .
   - cmake --build .
 #  - ctest -R Tests -C Debug
