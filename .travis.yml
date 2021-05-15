@@ -1,33 +1,18 @@
 dist: bionic
 language: cpp
 
-matrix:
-  include:
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - gcc-10
-            - g++-10
-      env:
-        - CC=gcc-10
-        - CXX=g++-10
+compiler: gcc
 
-    - os: linux
-      compiler: clang
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-xenial-8
-          packages:
-            - clang-8
-      env:
-        - CC=clang-8
-        - CXX=clang++-8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-10
+      - g++-10
+env:
+  - CC=gcc-10
+  - CXX=g++-10
 
 script:
   - cmake .
