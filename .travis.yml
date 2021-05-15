@@ -5,5 +5,5 @@ before_install:
   - sudo apt-get -y install g++-5
 
 script:
-  - CXX=/user/bin/g++-5 CC=/usr/bin/gcc-5 cmake .
+  - CXX=g++ CC=gcc cmake .
   - cmake --buld . -- -j2
