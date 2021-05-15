@@ -1,3 +1,4 @@
+os: linux
 dist: xenial
 language: cpp
 
@@ -5,7 +6,15 @@ compiler:
   - clang
   - gcc
 
-script:
-  #- CXX=g++ CC=gcc cmake .
-  - cmake .
-  - cmake --buld .
+#script:
+#  - cmake .
+#  - cmake --buld .
+
+jobs:
+  include:
+    - stage: build
+      script:
+        - cmake .
+        - cmake --build .
+    - stage: test
+      script: ctest -R Tests
