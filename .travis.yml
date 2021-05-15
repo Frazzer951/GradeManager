@@ -3,9 +3,11 @@ dist: xenial
 language: cpp
 
 compiler:
-  - clang
+#  - clang
   - gcc
 
 script:
-  - cmake .
-  - cmake --build . --target check
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cmake --build . --target Tests
