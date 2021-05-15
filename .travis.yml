@@ -4,3 +4,4 @@ language: cpp
 script:
   - CXX=g++ CC=gcc cmake .
   - cmake --buld .
+  - ctest
