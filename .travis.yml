@@ -7,8 +7,6 @@ compiler:
   - gcc
 
 script:
-  - mkdir build
-  - cd build
   - cmake ..
   - cmake --build .
-  - ctest -R Tests -C Debug
+#  - ctest -R Tests -C Debug
