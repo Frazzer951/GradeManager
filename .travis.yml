@@ -1,6 +1,9 @@
-dist: xenial
+dist: trusty
 language: cpp
 
+compiler:
+  - gcc
+
 script:
-  - CXX=g++ CC=gcc cmake .
+  - cmake .
   - cmake --build .
