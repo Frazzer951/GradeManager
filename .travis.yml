@@ -1,12 +1,10 @@
-os: linux
 dist: xenial
 language: cpp
 
 compiler:
-#  - clang
+  - clang
   - gcc
 
 script:
   - cmake .
   - cmake --build .
-#  - ctest -R Tests -C Debug
