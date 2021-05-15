@@ -10,4 +10,5 @@ script:
   - mkdir build
   - cd build
   - cmake ..
-  - cmake --build . --target Tests
+  - cmake --build .
+  - ctest -R Tests -C Debug
