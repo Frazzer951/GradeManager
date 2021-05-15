@@ -3,5 +3,5 @@ language: cpp
 
 script:
   - CXX=g++ CC=gcc cmake .
-  - cmake --buld . --target Tests
+  - cmake --buld . --target tests
   - ctest
