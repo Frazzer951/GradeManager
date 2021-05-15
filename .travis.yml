@@ -6,19 +6,7 @@ compiler:
   - clang
   - gcc
 
-#script:
-#  - cmake .
-#  - cmake --buld .
-
-stages:
-  - build
-  - test
-
-jobs:
-  include:
-    - stage: build
-      script:
-        - cmake .
-        - cmake --build .
-    - stage: test
-      script: ctest -R Tests
+script:
+  - cmake .
+  - cmake --buld .
+  - ctest -R Tests
