@@ -1,6 +1,11 @@
 dist: xenial
 language: cpp
 
+compiler:
+  - clang
+  - gcc
+
 script:
-  - CXX=g++ CC=gcc cmake .
+  #- CXX=g++ CC=gcc cmake .
+  - cmake .
   - cmake --buld .
