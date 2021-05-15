@@ -1,6 +1,9 @@
 dist: xenial
 language: cpp
 
+before_install:
+  - sudo apt-get -y install g++-5
+
 script:
   - CXX=g++-5 CC=gcc-5 cmake .
   - cmake --build .
