@@ -10,6 +10,10 @@ compiler:
 #  - cmake .
 #  - cmake --buld .
 
+stages:
+  - build
+  - test
+
 jobs:
   include:
     - stage: build
