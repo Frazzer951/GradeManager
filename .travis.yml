@@ -18,6 +18,15 @@ matrix:
 
     - os: linux
       compiler: clang
+      addons:
+        apt:
+          sources:
+            - 'ubuntu-toolchain-r-test'
+          packages:
+            - clang-12
+      env:
+        - CC=clang-12
+        - CXX=clang++-12
 
 script:
   - cmake .
