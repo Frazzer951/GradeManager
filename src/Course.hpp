@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "Assignment.h"
+#include "Assignment.hpp"
 
 class Course
 {

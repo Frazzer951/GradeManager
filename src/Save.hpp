@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Course.h"
+#include "Course.hpp"
 
 namespace saver
 {

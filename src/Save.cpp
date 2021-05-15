@@ -3,8 +3,8 @@
 #include <iostream>
 #include <string>
 
-#include "Course.h"
-#include "Save.h"
+#include "Course.hpp"
+#include "Save.hpp"
 
 std::string spaceToUnderscore( std::string str )
 {

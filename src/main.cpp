@@ -2,9 +2,9 @@
 #include <iostream>
 #include <string>
 
-#include "Assignment.h"
-#include "Course.h"
-#include "Save.h"
+#include "Assignment.hpp"
+#include "Course.hpp"
+#include "Save.hpp"
 
 void test()
 {

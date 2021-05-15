@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "Course.h"
+#include "Course.hpp"
 
 // Constructor
 Course::Course( std::string name, std::map<std::string, double> categories ) : _name( name ), _categories( categories ) { calcUncategorized(); }
