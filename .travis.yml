@@ -18,10 +18,13 @@ matrix:
 
     - os: linux
       compiler: clang
-      before_install:
-        - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-        - sudo add-apt-repository -y ppa:llvm-toolchain-bionic-12/main
-        - sudo apt-get -y install clang-12
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-bionic-12-main
+          packages:
+            - clang-12
       env:
         - CC=clang-12
         - CXX=clang++-12
