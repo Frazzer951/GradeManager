@@ -3,4 +3,4 @@ language: cpp
 
 script:
   - CXX=g++ CC=gcc cmake .
-  - cmake --buld .
+  - cmake --build .
