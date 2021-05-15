@@ -22,7 +22,7 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain
+            - llvm-toolchain-bionic-12
           packages:
             - clang-12
       env:
