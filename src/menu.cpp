@@ -83,7 +83,7 @@ std::string get_section_menu()
   return user_input;
 }
 
-Assignment get_Assignment_From_Vec( const std::vector<Assignment> & assignments )
+Assignment get_Assignment_From_Vec( std::vector<Assignment> assignments )
 {
   std::cout << "Select Assignment from one of the following: ";
   for( int i = 0; i < assignments.size(); i++ )
@@ -97,7 +97,7 @@ Assignment get_Assignment_From_Vec( const std::vector<Assignment> & assignments 
   return assignments[choice - 1];
 }
 
-std::string get_Category_From_Vec( std::vector<std::string> & categories )
+std::string get_Category_From_Vec( std::vector<std::string> categories )
 {
   std::cout << "Select Category from one of the following: ";
   for( int i = 0; i < categories.size(); i++ )
@@ -111,7 +111,7 @@ std::string get_Category_From_Vec( std::vector<std::string> & categories )
   return categories[choice - 1];
 }
 
-std::vector<Assignment> AssignmentMapToVector( std::map<std::string, Assignment> & assignments, std::string category )
+std::vector<Assignment> AssignmentMapToVector( std::map<std::string, Assignment> assignments, std::string category )
 {
   std::vector<Assignment> assigns;
 
@@ -128,7 +128,7 @@ std::vector<Assignment> AssignmentMapToVector( std::map<std::string, Assignment>
   return assigns;
 }
 
-std::vector<std::string> CategoryMapToVector( std::map<std::string, double> & categories )
+std::vector<std::string> CategoryMapToVector( std::map<std::string, double> categories )
 {
   std::vector<std::string> cats;
 
@@ -202,6 +202,7 @@ void assignment_menu( Course & course )
     else if( input == "2" )
     {
       // Remove Assignment
+      Assignment assign = get_Assignments( course );
     }
     else if( input == "3" )
     {
