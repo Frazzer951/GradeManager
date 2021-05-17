@@ -198,15 +198,23 @@ void assignment_menu( Course & course )
       std::getline( std::cin, a_cat );
 
       course.addAssignment( Assignment( a_name, a_score, a_max_score, a_cat ) );
+      return;
     }
     else if( input == "2" )
     {
       // Remove Assignment
       Assignment assign = get_Assignments( course );
+      course.removeAssignment( assign.name() );
+      return;
     }
     else if( input == "3" )
     {
+      // TODO: Impliment editing
+
       // Edit Assignment
+      std::cout << "This Function hasn't been implimented yet!";
+      return;
+      Assignment assign = get_Assignments( course );
     }
     else if( input == "4" || input == "q" || input == "quit" || input == "Quit" )
     {
