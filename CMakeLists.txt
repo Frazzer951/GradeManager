@@ -20,4 +20,6 @@ set( Sources
 )
 
 add_executable(${PROJECT_NAME} ${Sources} ${Headers} )
+add_library(${PROJECT_NAME}_lib STATIC ${Sources} ${Headers} )
+
 add_subdirectory(tests)

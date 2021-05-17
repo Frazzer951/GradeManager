@@ -36,7 +36,7 @@ set( Sources
 include_directories(../src)
 
 add_executable(${PROJECT_NAME} ${Sources})
-target_link_libraries(${PROJECT_NAME} gtest_main)
+target_link_libraries(${PROJECT_NAME} gtest_main GradeManager_lib)
 
 add_test(
     NAME ${PROJECT_NAME}
