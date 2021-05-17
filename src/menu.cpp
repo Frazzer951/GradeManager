@@ -85,7 +85,7 @@ std::string get_section_menu()
 
 Assignment get_Assignment_From_Vec( std::vector<Assignment> assignments )
 {
-  std::cout << "Select Assignment from one of the following: ";
+  std::cout << "Select Assignment from one of the following: \n";
   for( int i = 0; i < assignments.size(); i++ )
   {
     std::cout << i + 1 << ". " << assignments[i].name() << '\n';
@@ -93,13 +93,14 @@ Assignment get_Assignment_From_Vec( std::vector<Assignment> assignments )
   std::cout << "Enter Choice: ";
   int choice = 0;
   std::cin >> choice;
+  std::cin.clear();
 
   return assignments[choice - 1];
 }
 
 std::string get_Category_From_Vec( std::vector<std::string> categories )
 {
-  std::cout << "Select Category from one of the following: ";
+  std::cout << "Select Category from one of the following: \n";
   for( int i = 0; i < categories.size(); i++ )
   {
     std::cout << i + 1 << ". " << categories[i] << '\n';
@@ -107,6 +108,7 @@ std::string get_Category_From_Vec( std::vector<std::string> categories )
   std::cout << "Enter Choice: ";
   int choice = 0;
   std::cin >> choice;
+  std::cin.clear();
 
   return categories[choice - 1];
 }
@@ -147,7 +149,7 @@ Assignment get_Assignments( Course & course )
   while( true )
   {
     std::cout << "Do you want to see all courses or just one category?\n"
-              << "1. All Courses\n"
+              << "1. All Assignments\n"
               << "2. One Category\n"
               << "Enter Choice: ";
     std::string input;
@@ -192,8 +194,10 @@ void assignment_menu( Course & course )
       std::getline( std::cin, a_name );
       std::cout << "Enter the assignment score: ";
       std::cin >> a_score;
+      std::cin.clear();
       std::cout << "Enter the assignment max score: ";
       std::cin >> a_max_score;
+      std::cin.clear();
       std::cout << "Enter the assignment category: ";
       std::getline( std::cin, a_cat );
 
@@ -225,7 +229,7 @@ void assignment_menu( Course & course )
   }
 }
 
-void section_menu( Course & course )
+void category_menu( Course & course )
 {
   std::string input;
   while( true )
@@ -234,30 +238,44 @@ void section_menu( Course & course )
     // Get Input
     input = get_section_menu();
     std::cout << "\n";
-    if( input == "1" || input == "2" || input == "3" )
+    if( input == "1" )
     {
-      // TODO: Impliment editing
-      std::cout << "This Function hasn't been implemented yet!";
-      return;
+      // Add Category
+      std::string c_name;
+      double      c_weight = 0.0;
 
-      // Add Section
-    } /*
+      // Get Name and Weight
+      std::cout << "Enter the category name: ";
+      std::getline( std::cin, c_name );
+      std::cout << "Enter the category weight: ";
+      std::cin >> c_weight;
+      std::cin.clear();
+
+      course.addCategory( c_name, c_weight );
+      return;
+    }
     if( input == "2" )
     {
-      // TODO: Impliment editing
-      std::cout << "This Function hasn't been implemented yet!";
+      // Remove Category
+      auto category_vec = CategoryMapToVector( course.categories() );
+      auto category     = get_Category_From_Vec( category_vec );
+      course.removeCategory( category );
       return;
-
-      // Remove Section
     }
     if( input == "3" )
     {
-      // TODO: Impliment editing
-      std::cout << "This Function hasn't been implemented yet!";
-      return;
+      // Edit Category
+      double c_weight;
+      auto   category_vec = CategoryMapToVector( course.categories() );
+      auto   category     = get_Category_From_Vec( category_vec );
 
-      // Edit Section
-    }*/
+      std::cout << "The current weight is " << course.categories()[category] << '.\n'
+                << "Enter the new Weight: ";
+      std::cin >> c_weight;
+
+      course.editCategory( category, c_weight );
+      return;
+    }
     if( input == "4" || input == "q" || input == "quit" || input == "Quit" )
     {
       return;
@@ -297,7 +315,7 @@ void user_input_handler( Course & course )
     else if( input == "4" )
     {
       // Go into Section Menu
-      section_menu( course );
+      category_menu( course );
     }
     else if( input == "5" || input == "q" || input == "quit" || input == "Quit" )
     {
