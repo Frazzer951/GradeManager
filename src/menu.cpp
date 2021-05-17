@@ -111,11 +111,11 @@ std::string get_Category_From_Vec( std::vector<std::string> categories )
   return categories[choice - 1];
 }
 
-std::vector<Assignment> AssignmentMapToVector( std::map<std::string, Assignment> assignments, std::string category )
+std::vector<Assignment> AssignmentMapToVector( const std::map<std::string, Assignment> & assignments, const std::string & category )
 {
   std::vector<Assignment> assigns;
 
-  for( auto & [name, assignment] : assignments )
+  for( const auto & [name, assignment] : assignments )
   {
     if( category.empty() )
       assigns.push_back( assignment );
@@ -128,12 +128,12 @@ std::vector<Assignment> AssignmentMapToVector( std::map<std::string, Assignment>
   return assigns;
 }
 
-std::vector<std::string> CategoryMapToVector( std::map<std::string, double> categories )
+std::vector<std::string> CategoryMapToVector( const std::map<std::string, double> & categories )
 {
   std::vector<std::string> cats( categories.size() );
 
   int i = 0;
-  for( auto & [name, weight] : categories )
+  for( const auto & [name, weight] : categories )
   {
     cats[i] = name;
     i++;

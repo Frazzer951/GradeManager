@@ -17,8 +17,8 @@ Course get_Course();
 Assignment get_Assignment_From_Vec( std::vector<Assignment> assignments );
 Assignment get_Assignments( const Course & course );
 
-std::vector<Assignment>  AssignmentMapToVector( std::map<std::string, Assignment> assignments, std::string category = "" );
-std::vector<std::string> CategoryMapToVector( std::map<std::string, double> categories );
+std::vector<Assignment>  AssignmentMapToVector( const std::map<std::string, Assignment> & assignments, const std::string & category = "" );
+std::vector<std::string> CategoryMapToVector( const std::map<std::string, double> & categories );
 
 std::string get_Category_From_Vec( std::vector<std::string> categories );
 std::string get_main_menu();
