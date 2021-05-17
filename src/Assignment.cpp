@@ -46,3 +46,8 @@ std::istream & operator>>( std::istream & stream, Assignment & assignment )
   if( stream ) assignment = std::move( temp );
   return stream;
 }
+
+bool operator==( const Assignment & _Left, const Assignment & _Right )
+{
+  return ( _Left._name == _Right._name ) && ( _Left._score == _Right._score ) && ( _Left._maxScore == _Right._maxScore ) && ( _Left._category == _Right._category );
+}

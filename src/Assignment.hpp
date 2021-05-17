@@ -9,6 +9,7 @@ public:
   // Operators
   friend std::ostream & operator<<( std::ostream & stream, const Assignment & assignment );
   friend std::istream & operator>>( std::istream & stream, Assignment & assignment );
+  friend bool           operator==( const Assignment & _Left, const Assignment & _Right );
 
   // Constructor
   Assignment( std::string_view name     = {},
