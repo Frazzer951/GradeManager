@@ -86,4 +86,3 @@ TEST_F( AssignmentTests, ShiftLeftOperator )
 
   EXPECT_EQ( "Test, 100/100", output.str() );
 }
-

@@ -30,7 +30,8 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
                  EXCLUDE_FROM_ALL)
 
 set( Sources
-    tests.cpp
+    AssignmentTests.cpp
+    CourseTests.cpp
 )
 
 include_directories(../src)
