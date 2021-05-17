@@ -91,7 +91,7 @@ Assignment get_Assignment_From_Vec( std::vector<Assignment> assignments )
     std::cout << i + 1 << ". " << assignments[i].name() << '\n';
   }
   std::cout << "Enter Choice: ";
-  int choice;
+  int choice = 0;
   std::cin >> choice;
 
   return assignments[choice - 1];
@@ -105,7 +105,7 @@ std::string get_Category_From_Vec( std::vector<std::string> categories )
     std::cout << i + 1 << ". " << categories[i] << '\n';
   }
   std::cout << "Enter Choice: ";
-  int choice;
+  int choice = 0;
   std::cin >> choice;
 
   return categories[choice - 1];
@@ -130,11 +130,13 @@ std::vector<Assignment> AssignmentMapToVector( std::map<std::string, Assignment>
 
 std::vector<std::string> CategoryMapToVector( std::map<std::string, double> categories )
 {
-  std::vector<std::string> cats;
+  std::vector<std::string> cats( categories.size() );
 
+  int i = 0;
   for( auto & [name, weight] : categories )
   {
-    cats.push_back( name );
+    cats[i] = name;
+    i++;
   }
 
   return cats;
@@ -163,10 +165,8 @@ Assignment get_Assignments( Course & course )
       auto assign_vec   = AssignmentMapToVector( course.assignments(), category );
       return get_Assignment_From_Vec( assign_vec );
     }
-    else
-    {
-      std::cout << "\n\nUnknown Input!\n";
-    }
+
+    std::cout << "\n\nUnknown Input!\n";
   }
 }
 
@@ -184,8 +184,8 @@ void assignment_menu( Course & course )
       // Add Assignment
       std::string a_name;
       std::string a_cat;
-      double      a_score;
-      double      a_max_score;
+      double      a_score     = 0.0;
+      double      a_max_score = 0.0;
 
       // Get Name Score Max-Score, and Category
       std::cout << "Enter the assignment name: ";
@@ -200,30 +200,28 @@ void assignment_menu( Course & course )
       course.addAssignment( Assignment( a_name, a_score, a_max_score, a_cat ) );
       return;
     }
-    else if( input == "2" )
+    if( input == "2" )
     {
       // Remove Assignment
       Assignment assign = get_Assignments( course );
       course.removeAssignment( assign.name() );
       return;
     }
-    else if( input == "3" )
+    if( input == "3" )
     {
       // TODO: Impliment editing
+      std::cout << "This Function hasn't been implemented yet!";
+      return;
 
       // Edit Assignment
-      std::cout << "This Function hasn't been implimented yet!";
-      return;
       Assignment assign = get_Assignments( course );
     }
-    else if( input == "4" || input == "q" || input == "quit" || input == "Quit" )
+    if( input == "4" || input == "q" || input == "quit" || input == "Quit" )
     {
       return;
     }
-    else
-    {
-      std::cout << "Unknown Input!\n";
-    }
+
+    std::cout << "Unknown Input!\n";
   }
 }
 
@@ -236,26 +234,36 @@ void section_menu( Course & course )
     // Get Input
     input = get_section_menu();
     std::cout << "\n";
-    if( input == "1" )
+    if( input == "1" || input == "2" || input == "3" )
     {
+      // TODO: Impliment editing
+      std::cout << "This Function hasn't been implemented yet!";
+      return;
+
       // Add Section
-    }
-    else if( input == "2" )
+    } /*
+    if( input == "2" )
     {
+      // TODO: Impliment editing
+      std::cout << "This Function hasn't been implemented yet!";
+      return;
+
       // Remove Section
     }
-    else if( input == "3" )
+    if( input == "3" )
     {
+      // TODO: Impliment editing
+      std::cout << "This Function hasn't been implemented yet!";
+      return;
+
       // Edit Section
-    }
-    else if( input == "4" || input == "q" || input == "quit" || input == "Quit" )
+    }*/
+    if( input == "4" || input == "q" || input == "quit" || input == "Quit" )
     {
       return;
     }
-    else
-    {
-      std::cout << "Unknown Input!\n";
-    }
+
+    std::cout << "Unknown Input!\n";
   }
 }
 
