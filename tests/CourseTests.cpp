@@ -101,20 +101,62 @@ TEST_F( CourseTestsBase, EditCategory )
 TEST_F( CourseTestsBase, AddAssignment )
 {
   std::map<std::string /*Name    */, Assignment> expected;
-  Assignment                                     assign( "Test", 10, 10, "Cat" );
+
+  Assignment assign( "Test", 10, 10, "Cat" );
   expected[assign.name()] = assign;
 
   course.addAssignment( assign );
   auto result = course.assignments();
 
-  //EXPECT_EQ( expected, result );
+  EXPECT_EQ( expected, result );
 }
 
 TEST_F( CourseTestsBase, AddAssignments )
 {
-}
+  std::map<std::string /*Name    */, Assignment> expected;
 
+  Assignment assign_1( "Test_1", 10, 10, "Cat_1" );
+  Assignment assign_2( "Test_2", 5, 20, "Cat_2" );
+  expected[assign_1.name()] = assign_1;
+  expected[assign_2.name()] = assign_2;
+
+  course.addAssignments( { assign_1, assign_2 } );
+  auto result = course.assignments();
+
+  EXPECT_EQ( expected, result );
+}
 
 TEST_F( CourseTestsBase, RemoveAssignment )
 {
+  std::map<std::string /*Name    */, Assignment> expected;
+
+  Assignment assign_1( "Test_1", 10, 10, "Cat_1" );
+  Assignment assign_2( "Test_2", 5, 20, "Cat_2" );
+  expected[assign_1.name()] = assign_1;
+
+  course.addAssignments( { assign_1, assign_2 } );
+  course.removeAssignment( "Test_2" );
+  auto result = course.assignments();
+
+  EXPECT_EQ( expected, result );
+}
+
+// Calculate Uncategorized
+TEST_F( CourseTestsBase, CalcUncategorized )
+{
+  course.addCategory( "Test", 100 );
+  auto result = course.categories();
+  EXPECT_DOUBLE_EQ( 0.0, result["Uncategorized"] );
+
+  course.editCategory( "Test", 75 );
+  result = course.categories();
+  EXPECT_DOUBLE_EQ( 25.0, result["Uncategorized"] );
+
+  course.editCategory( "Test", 50 );
+  result = course.categories();
+  EXPECT_DOUBLE_EQ( 50.0, result["Uncategorized"] );
+
+  course.editCategory( "Test", 13.8 );
+  result = course.categories();
+  EXPECT_DOUBLE_EQ( 86.2, result["Uncategorized"] );
 }
