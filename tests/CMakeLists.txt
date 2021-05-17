@@ -32,6 +32,7 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
 set( Sources
     AssignmentTests.cpp
     CourseTests.cpp
+    SaveTests.cpp
 )
 
 include_directories(../src)

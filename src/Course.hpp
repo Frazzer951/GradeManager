@@ -9,6 +9,8 @@
 class Course
 {
 public:
+  friend bool operator==( const Course & _Left, const Course & _Right );
+
   // Type Definition Alias
   using CategoryWeights = std::map<std::string /*Category*/, double /*Weight*/>;
   using Assignments     = std::map<std::string /*Name    */, Assignment>;

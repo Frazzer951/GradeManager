@@ -170,3 +170,9 @@ void Course::calcUncategorized()
     std::cout << "Category Weights add up to more than 100!\n";
   }
 }
+
+bool operator==( const Course & _Left, const Course & _Right )
+
+{
+  return ( _Left._name == _Right._name ) && ( _Left._categories == _Right._categories ) && ( _Left._assignments == _Right._assignments );
+}
