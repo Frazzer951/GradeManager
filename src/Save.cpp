@@ -18,7 +18,7 @@ std::string spaceToUnderscore( std::string str )
 
 void saver::saveCourse( Course c, std::string filename )
 {
-  if( filename == "" ) filename = spaceToUnderscore( c.name() ) + ".course";
+  if( filename.empty() ) filename = spaceToUnderscore( c.name() ) + ".course";
   std::ofstream courseFile;
   courseFile.open( filename );
 

@@ -47,7 +47,7 @@ std::istream & operator>>( std::istream & stream, Assignment & assignment )
   return stream;
 }
 
-bool operator==( const Assignment & _Left, const Assignment & _Right )
+bool operator==( const Assignment & lhs, const Assignment & rhs )
 {
-  return ( _Left._name == _Right._name ) && ( _Left._score == _Right._score ) && ( _Left._maxScore == _Right._maxScore ) && ( _Left._category == _Right._category );
+  return ( lhs._name == rhs._name ) && ( lhs._score == rhs._score ) && ( lhs._maxScore == rhs._maxScore ) && ( lhs._category == rhs._category );
 }

@@ -11,12 +11,14 @@ set( Headers
   src/Assignment.hpp
   src/Course.hpp
   src/Save.hpp
+  src/menu.hpp
 )
 set( Sources
   src/Assignment.cpp
   src/Course.cpp
   src/Save.cpp
   src/main.cpp
+  src/menu.cpp
 )
 
 add_executable(${PROJECT_NAME} ${Sources} ${Headers} )

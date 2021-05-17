@@ -4,7 +4,6 @@
 # clang-tidy -checks=* -dump-config > .clang-tidy
 # See  https://releases.llvm.org/10.0.0/tools/clang/tools/extra/docs/clang-tidy/index.html
 Checks:          '-*,
-
                   bugprone-*,
                   clang-analyzer-*,
                   clang-diagnostic-*,
@@ -14,11 +13,11 @@ Checks:          '-*,
                   performance-*,
                   portability-*,
                   readability-*,
-
                   -modernize-use-trailing-return-type,
-                  -readability-braces-around-statements'
+                  -readability-braces-around-statements,
+				  -readability-magic-numbers'
 WarningsAsErrors: ''
-HeaderFilterRegex: ''
+HeaderFilterRegex: '.hpp'
 AnalyzeTemporaryDtors: false
 FormatStyle:     file
 User:            ''

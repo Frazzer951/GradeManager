@@ -12,7 +12,7 @@ Course::CategoryWeights Course::categories() { return _categories; }
 Course::Assignments     Course::assignments() { return _assignments; }
 
 // Mutators
-void Course::addCategory( std::string catName, double weight )
+void Course::addCategory( const std::string & catName, const double & weight )
 {
   if( weight < 0 )
   {
@@ -171,8 +171,8 @@ void Course::calcUncategorized()
   }
 }
 
-bool operator==( const Course & _Left, const Course & _Right )
+bool operator==( const Course & lhs, const Course & rhs )
 
 {
-  return ( _Left._name == _Right._name ) && ( _Left._categories == _Right._categories ) && ( _Left._assignments == _Right._assignments );
+  return ( lhs._name == rhs._name ) && ( lhs._categories == rhs._categories ) && ( lhs._assignments == rhs._assignments );
 }

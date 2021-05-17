@@ -1,3 +1,5 @@
+#ifndef ASSIGNMENT_H
+#define ASSIGNMENT_H
 #pragma once
 
 #include <string>
@@ -9,7 +11,7 @@ public:
   // Operators
   friend std::ostream & operator<<( std::ostream & stream, const Assignment & assignment );
   friend std::istream & operator>>( std::istream & stream, Assignment & assignment );
-  friend bool           operator==( const Assignment & _Left, const Assignment & _Right );
+  friend bool           operator==( const Assignment & lhs, const Assignment & rhs );
 
   // Constructor
   Assignment( std::string_view name     = {},
@@ -18,10 +20,10 @@ public:
               std::string_view category = {} );
 
   // Queries
-  std::string name() const;        // Get the name
-  std::string category() const;    // Get the category name
-  double      score() const;       // Get the score
-  double      maxScore() const;    // Get the max score
+  [[nodiscard]] std::string name() const;        // Get the name
+  [[nodiscard]] std::string category() const;    // Get the category name
+  [[nodiscard]] double      score() const;       // Get the score
+  [[nodiscard]] double      maxScore() const;    // Get the max score
 
   // Mutators
   void name( std::string_view newName );            // Change the name
@@ -35,3 +37,5 @@ private:
   double      _maxScore;
   std::string _category;
 };
+
+#endif

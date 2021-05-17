@@ -1,3 +1,5 @@
+#ifndef COURSE_H
+#define COURSE_H
 #pragma once
 
 #include <map>
@@ -9,7 +11,7 @@
 class Course
 {
 public:
-  friend bool operator==( const Course & _Left, const Course & _Right );
+  friend bool operator==( const Course & lhs, const Course & rhs );
 
   // Type Definition Alias
   using CategoryWeights = std::map<std::string /*Category*/, double /*Weight*/>;
@@ -25,12 +27,12 @@ public:
   Assignments     assignments();    // Returns map of assignments
 
   // Mutator
-  void addCategory( std::string catName, double weight );        // Add a Category
-  void removeCategory( std::string catName );                    // Remove a Category
-  void editCategory( std::string catName, double newWeight );    // Change a Category's weight
-  void addAssignment( Assignment assign );                       // Add an assignment to the course
-  void addAssignments( std::vector<Assignment> assigns );        // Add multiple assignments to the course
-  void removeAssignment( std::string name );                     // Remove an assignment from the course
+  void addCategory( const std::string & catName, const double & weight );    // Add a Category
+  void removeCategory( std::string catName );                                // Remove a Category
+  void editCategory( std::string catName, double newWeight );                // Change a Category's weight
+  void addAssignment( Assignment assign );                                   // Add an assignment to the course
+  void addAssignments( std::vector<Assignment> assigns );                    // Add multiple assignments to the course
+  void removeAssignment( std::string name );                                 // Remove an assignment from the course
 
   // Operations
   void calcGrade();            // Print out the total grade
@@ -41,3 +43,5 @@ private:
   CategoryWeights _categories;
   Assignments     _assignments;
 };
+
+#endif
