@@ -86,3 +86,11 @@ TEST_F( AssignmentTests, ShiftLeftOperator )
 
   EXPECT_EQ( "Test, 100/100", output.str() );
 }
+
+// Equal Operator
+TEST_F( AssignmentTests, EqualOperator )
+{
+  Assignment a( "Test", 100.0, 100.0, "Test Cat" );
+
+  EXPECT_EQ( assign, a );
+}
