@@ -93,7 +93,7 @@ Assignment get_Assignment_From_Vec( std::vector<Assignment> assignments )
   std::cout << "Enter Choice: ";
   int choice = 0;
   std::cin >> choice;
-  std::cin.clear();
+  std::cin.ignore();
 
   return assignments[choice - 1];
 }
@@ -108,7 +108,7 @@ std::string get_Category_From_Vec( std::vector<std::string> categories )
   std::cout << "Enter Choice: ";
   int choice = 0;
   std::cin >> choice;
-  std::cin.clear();
+  std::cin.ignore();
 
   return categories[choice - 1];
 }
@@ -192,7 +192,7 @@ void edit_assignment( Assignment assign )
       std::cout << "The current Score is " << assign.score() << ".\n"
                 << "Enter the new Score: ";
       std::cin >> a_score;
-      std::cin.clear();
+      std::cin.ignore();
 
       assign.score( a_score );
 
@@ -206,7 +206,7 @@ void edit_assignment( Assignment assign )
       std::cout << "The current max Score is " << assign.maxScore() << ".\n"
                 << "Enter the new Max Score: ";
       std::cin >> a_maxScore;
-      std::cin.clear();
+      std::cin.ignore();
 
       assign.maxScore( a_maxScore );
 
@@ -251,10 +251,10 @@ void assignment_menu( Course & course )
       std::getline( std::cin, a_name );
       std::cout << "Enter the assignment score: ";
       std::cin >> a_score;
-      std::cin.clear();
+      std::cin.ignore();
       std::cout << "Enter the assignment max score: ";
       std::cin >> a_max_score;
-      std::cin.clear();
+      std::cin.ignore();
       std::cout << "Enter the assignment category: ";
       std::getline( std::cin, a_cat );
 
@@ -307,7 +307,7 @@ void category_menu( Course & course )
       std::getline( std::cin, c_name );
       std::cout << "Enter the category weight: ";
       std::cin >> c_weight;
-      std::cin.clear();
+      std::cin.ignore();
 
       course.addCategory( c_name, c_weight );
       return;
