@@ -27,6 +27,7 @@ std::string get_section_menu();
 
 void assignment_menu( Course & course );
 void category_menu( Course & course );
+void edit_assignment(Assignment assign);
 void user_input_handler( Course & course );
 
 #endif

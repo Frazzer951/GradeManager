@@ -172,6 +172,63 @@ Assignment get_Assignments( Course & course )
   }
 }
 
+void edit_assignment( Assignment assign )
+{
+  while( true )
+  {
+    std::cout << "What would you like to edit? \n"
+              << "1. Score     - " << assign.score() << "\n"
+              << "2. Max Score - " << assign.maxScore() << "\n"
+              << "3. Category  - " << assign.category() << "\n"
+              << "Enter Choice: ";
+    std::string input;
+    std::getline( std::cin, input );
+
+    if( input == "1" )
+    {
+      // Edit Score
+
+      double a_score = 0.0;
+      std::cout << "The current Score is " << assign.score() << ".\n"
+                << "Enter the new Score: ";
+      std::cin >> a_score;
+      std::cin.clear();
+
+      assign.score( a_score );
+
+      return;
+    }
+    if( input == "2" )
+    {
+      // Edit Max Score
+
+      double a_maxScore = 0.0;
+      std::cout << "The current max Score is " << assign.maxScore() << ".\n"
+                << "Enter the new Max Score: ";
+      std::cin >> a_maxScore;
+      std::cin.clear();
+
+      assign.maxScore( a_maxScore );
+
+      return;
+    }
+    if( input == "3" )
+    {
+      // Edit Category
+
+      std::string a_cat;
+      std::cout << "The current Category is " << assign.category() << ".\n"
+                << "Enter the new Category: ";
+      std::getline( std::cin, a_cat );
+
+      assign.category( a_cat );
+
+      return;
+    }
+    std::cout << "\n\nUnknown Input\n";
+  }
+}
+
 void assignment_menu( Course & course )
 {
   std::string input;
@@ -213,12 +270,13 @@ void assignment_menu( Course & course )
     }
     if( input == "3" )
     {
-      // TODO: Impliment editing
-      std::cout << "This Function hasn't been implemented yet!";
-      return;
-
       // Edit Assignment
       Assignment assign = get_Assignments( course );
+
+      // Edit Score, Max Score, Category
+      edit_assignment( assign );
+
+      return;
     }
     if( input == "4" || input == "q" || input == "quit" || input == "Quit" )
     {
@@ -265,11 +323,11 @@ void category_menu( Course & course )
     if( input == "3" )
     {
       // Edit Category
-      double c_weight;
+      double c_weight     = 0.0;
       auto   category_vec = CategoryMapToVector( course.categories() );
       auto   category     = get_Category_From_Vec( category_vec );
 
-      std::cout << "The current weight is " << course.categories()[category] << '.\n'
+      std::cout << "The current weight is " << course.categories()[category] << ".\n"
                 << "Enter the new Weight: ";
       std::cin >> c_weight;
 
