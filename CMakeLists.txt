@@ -33,4 +33,7 @@ add_library(${PROJECT_NAME}_lib STATIC ${Sources} ${Headers} ${thirdparty_files}
 
 add_subdirectory(tests)
 
-target_clangformat_setup(${PROJECT_NAME})
+clangformat_setup(
+  ${Sources} 
+  ${Headers}
+)
