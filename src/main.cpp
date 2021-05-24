@@ -50,16 +50,53 @@ void newCourse()
   course = Course( name );
 }
 
+void printVecOption( std::vector<std::string> vec )
+{
+  std::cout << "Chose from one of the below options:\n";
+
+  for( int i = 0; i < vec.size(); i++ )
+  {
+    std::cout << '\t' << i + 1 << ". \t" << vec[i] << '\n';
+  }
+}
+
+int getChoice()
+{
+  int index;
+  std::cout << "Enter Choice: ";
+  std::cin >> index;
+  std::cin.ignore();
+  return index;
+}
+
 Assignment getAssignment( Course c )
 {
-  // TODO:
-  return Assignment();
+  std::vector<std::string> assignVec;
+
+  for( auto & [name, assign] : c.assignments() )
+  {
+    assignVec.push_back( name );
+  }
+
+  printVecOption( assignVec );
+  int index = getChoice() - 1;
+
+  return c.assignments()[assignVec[index]];
 }
 
 std::string getCategory( Course c )
 {
-  // TODO:
-  return "";
+  std::vector<std::string> catVec;
+
+  for( auto & [name, assign] : c.categories() )
+  {
+    catVec.push_back( name );
+  }
+
+  printVecOption( catVec );
+  int index = getChoice() - 1;
+
+  return catVec[index];
 }
 
 void addAssign()
@@ -178,9 +215,12 @@ void editCategory()
   std::cout << "The current weight is " << course.categories()[category] << ".\n"
             << "Enter the new Weight: ";
   std::cin >> c_weight;
+  std::cin.ignore();
 
   course.editCategory( category, c_weight );
 }
+
+void printGrade() { course.calcGrade(); }
 
 int main()
 {
@@ -190,7 +230,7 @@ int main()
 
   FMenu main_menu( "Course Menu" );
   main_menu.addMenuOption( menuOption( "Save Course", "Save the course to a file", save ) );
-  main_menu.addMenuOption( menuOption( "Get Grade", "Print out the current grade for this course", save ) );
+  main_menu.addMenuOption( menuOption( "Get Grade", "Print out the current grade for this course", printGrade ) );
 
   FMenu assignment_menu( "Assignment Menu" );
   assignment_menu.addMenuOption( menuOption( "Add", "\tAdd a new Assignment", addAssign ) );
