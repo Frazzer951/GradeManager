@@ -4,6 +4,8 @@ project(GradeManager C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+include(ClangFormat)
 enable_testing()
 
 # Add all files from src/ folder
@@ -25,3 +27,5 @@ add_executable(${PROJECT_NAME} ${Sources} ${Headers} )
 add_library(${PROJECT_NAME}_lib STATIC ${Sources} ${Headers} )
 
 add_subdirectory(tests)
+
+target_clangformat_setup(${PROJECT_NAME})

@@ -4,6 +4,8 @@ project(Tests)
 
 set(CMAKE_CXX_STANDARD 17)
 
+include(ClangFormat)
+
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
@@ -44,3 +46,5 @@ add_test(
     NAME ${PROJECT_NAME}
     COMMAND ${PROJECT_NAME}
 )
+
+target_clangformat_setup(${PROJECT_NAME})
