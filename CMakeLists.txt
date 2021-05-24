@@ -13,14 +13,12 @@ set( Headers
   src/Assignment.hpp
   src/Course.hpp
   src/Save.hpp
-  src/menu.hpp
 )
 set( Sources
   src/Assignment.cpp
   src/Course.cpp
   src/Save.cpp
   src/main.cpp
-  src/menu.cpp
 )
 
 include_directories(thirdparty)
