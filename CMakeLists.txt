@@ -23,8 +23,15 @@ set( Sources
   src/menu.cpp
 )
 
-add_executable(${PROJECT_NAME} ${Sources} ${Headers} )
-add_library(${PROJECT_NAME}_lib STATIC ${Sources} ${Headers} )
+include_directories(thirdparty)
+
+file(GLOB thirdparty_files
+     "thirdparty/*.cpp"
+     "thirdparty/*.hpp"
+)
+
+add_executable(${PROJECT_NAME} ${Sources} ${Headers} ${thirdparty_files} )
+add_library(${PROJECT_NAME}_lib STATIC ${Sources} ${Headers} ${thirdparty_files} )
 
 add_subdirectory(tests)
 
