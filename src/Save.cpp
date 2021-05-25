@@ -6,14 +6,17 @@
 #include "Course.hpp"
 #include "Save.hpp"
 
-std::string spaceToUnderscore( std::string str )
+std::string spaceToUnderscore( const std::string & str )
 {
-  for( int i = 0; i < str.length(); i++ )
+  std::string tmp_str;
+  for( char c : str )
   {
-    if( str[i] == ' ' )
-      str[i] = '_';
+    if( c == ' ' )
+      tmp_str += '_';
+    else
+      tmp_str += c;
   }
-  return str;
+  return tmp_str;
 }
 
 void saver::saveCourse( Course c, std::string filename )
@@ -45,7 +48,7 @@ void saver::saveCourse( Course c, std::string filename )
   courseFile.close();
 }
 
-Course saver::loadCourse( std::string filename )
+Course saver::loadCourse( const std::string & filename )
 {
   std::ifstream fin( filename );
 
@@ -55,7 +58,7 @@ Course saver::loadCourse( std::string filename )
   Course loadedCourse( course_name );
 
   std::string catName;
-  double      weight;
+  double      weight = 0.0;
 
   while( true )
   {

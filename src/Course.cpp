@@ -4,7 +4,7 @@
 #include "Course.hpp"
 
 // Constructor
-Course::Course( std::string name, std::map<std::string, double> categories ) : _name( name ), _categories( categories ) { calcUncategorized(); }
+Course::Course( std::string name, std::map<std::string, double> categories ) : _name( std::move( name ) ), _categories( std::move( categories ) ) { calcUncategorized(); }
 
 // Queries
 std::string             Course::name() { return _name; }
@@ -31,7 +31,7 @@ void Course::addCategory( const std::string & catName, const double & weight )
   calcUncategorized();
 }
 
-void Course::removeCategory( std::string catName )
+void Course::removeCategory( const std::string & catName )
 {
   if( _categories.find( catName ) == _categories.end() )
   {
@@ -44,7 +44,7 @@ void Course::removeCategory( std::string catName )
   calcUncategorized();
 }
 
-void Course::editCategory( std::string catName, double newWeight )
+void Course::editCategory( const std::string & catName, double newWeight )
 {
   if( newWeight < 0 )
   {
@@ -64,7 +64,7 @@ void Course::editCategory( std::string catName, double newWeight )
   calcUncategorized();
 }
 
-void Course::addAssignment( Assignment assign )
+void Course::addAssignment( const Assignment & assign )
 {
   if( _assignments.find( assign.name() ) == _assignments.end() )
   {
@@ -76,15 +76,15 @@ void Course::addAssignment( Assignment assign )
   }
 }
 
-void Course::addAssignments( std::vector<Assignment> assigns )
+void Course::addAssignments( const std::vector<Assignment> & assigns )
 {
-  for( auto & assign : assigns )
+  for( const auto & assign : assigns )
   {
     addAssignment( assign );
   }
 }
 
-void Course::removeAssignment( std::string name )
+void Course::removeAssignment( const std::string & name )
 {
   if( _assignments.find( name ) == _assignments.end() )
   {

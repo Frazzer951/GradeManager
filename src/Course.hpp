@@ -28,11 +28,11 @@ public:
 
   // Mutator
   void addCategory( const std::string & catName, const double & weight );    // Add a Category
-  void removeCategory( std::string catName );                                // Remove a Category
-  void editCategory( std::string catName, double newWeight );                // Change a Category's weight
-  void addAssignment( Assignment assign );                                   // Add an assignment to the course
-  void addAssignments( std::vector<Assignment> assigns );                    // Add multiple assignments to the course
-  void removeAssignment( std::string name );                                 // Remove an assignment from the course
+  void removeCategory( const std::string & catName );                        // Remove a Category
+  void editCategory( const std::string & catName, double newWeight );        // Change a Category's weight
+  void addAssignment( const Assignment & assign );                           // Add an assignment to the course
+  void addAssignments( const std::vector<Assignment> & assigns );            // Add multiple assignments to the course
+  void removeAssignment( const std::string & name );                         // Remove an assignment from the course
 
   // Operations
   void calcGrade();            // Print out the total grade

@@ -62,7 +62,7 @@ void printVecOption( std::vector<std::string> vec )
 
 int getChoice()
 {
-  int index;
+  int index = -1;
   std::cout << "Enter Choice: ";
   std::cin >> index;
   std::cin.ignore();
