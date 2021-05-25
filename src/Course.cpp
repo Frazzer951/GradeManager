@@ -4,7 +4,8 @@
 #include "Course.hpp"
 
 // Constructor
-Course::Course( std::string name, std::map<std::string, double> categories ) : _name( std::move( name ) ), _categories( std::move( categories ) ) { calcUncategorized(); }
+Course::Course( std::string name, std::map<std::string, double> categories ) :
+  _name( std::move( name ) ), _categories( std::move( categories ) ) { calcUncategorized(); }
 
 // Queries
 std::string             Course::name() { return _name; }

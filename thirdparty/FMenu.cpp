@@ -2,11 +2,13 @@
 
 bool isNum( const std::string & str )
 {
-  return std::all_of( str.begin(), str.end(), []( char c ) { return isdigit( c ); } );
+  return std::all_of( str.begin(), str.end(), []( char c )
+                      { return isdigit( c ); } );
 }
 
 // Constructor
-FMenu::FMenu( std::string name, char quit_key, char return_key ) : _name( std::move( name ) ), _quit_key( quit_key ), _return_key( return_key ) {}
+FMenu::FMenu( std::string name, char quit_key, char return_key ) :
+  _name( std::move( name ) ), _quit_key( quit_key ), _return_key( return_key ) {}
 
 // Queries
 std::string FMenu::name() { return _name; }

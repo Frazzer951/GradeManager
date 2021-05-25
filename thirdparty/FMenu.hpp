@@ -17,7 +17,8 @@ class menuOption
   functiontype _f;
 
 public:
-  menuOption( std::string name = "", std::string desc = "", functiontype f = functiontype() ) : _name( std::move( name ) ), _description( std::move( desc ) ), _f( f ) {}
+  menuOption( std::string name = "", std::string desc = "", functiontype f = functiontype() ) :
+    _name( std::move( name ) ), _description( std::move( desc ) ), _f( f ) {}
 
   std::string  name() { return _name; }                  // Get Name
   std::string  description() { return _description; }    // Get Description

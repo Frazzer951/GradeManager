@@ -1,8 +1,4 @@
 ---
-# clang-tidy configuration file
-# Created and then taylored from LLVM version 10.0.0
-# clang-tidy -checks=* -dump-config > .clang-tidy
-# See  https://releases.llvm.org/10.0.0/tools/clang/tools/extra/docs/clang-tidy/index.html
 Checks:             '-*,
                     bugprone-*,
                     clang-analyzer-*,
