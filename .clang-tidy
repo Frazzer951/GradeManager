@@ -19,7 +19,9 @@ Checks:             '-*,
                     -readability-braces-around-statements,
                     -concurrency-mt-unsafe,
                     -misc-non-private-member-variables-in-classes,
-                    -cppcoreguidelines-non-private-member-variables-in-classes'
+                    -cppcoreguidelines-non-private-member-variables-in-classes,
+                    -cppcoreguidelines-avoid-non-const-global-variables,
+                    -cppcoreguidelines-owning-memory'
 WarningsAsErrors:   ''
 HeaderFilterRegex:  '.hpp'
 FormatStyle:        file
