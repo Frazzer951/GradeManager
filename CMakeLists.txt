@@ -27,6 +27,7 @@ include_directories(thirdparty)
 file(GLOB thirdparty_files
      "thirdparty/*.cpp"
      "thirdparty/*.hpp"
+     "thirdparty/*.hxx"
 )
 
 add_executable(${PROJECT_NAME} ${Sources} ${Headers} ${thirdparty_files} )
