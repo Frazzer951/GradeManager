@@ -73,13 +73,13 @@ Course saver::loadCourse( const std::string & filename )
   // Load Categories
   for( auto category : json_course["categories"] )
   {
-    loaded_course.addCategory( category["name"], category["weight"] );
+    loaded_course.addCategory( (std::string) category["name"], (double) category["weight"] );
   }
 
   // Load Assignments
   for( auto assignment : json_course["assignments"] )
   {
-    loaded_course.addAssignment( Assignment( assignment["name"], assignment["score"], assignment["max_score"], assignment["category"] ) );
+    loaded_course.addAssignment( Assignment( (std::string) assignment["name"], (double) assignment["score"], (double) assignment["max_score"], (std::string) assignment["category"] ) );
   }
 
   return loaded_course;
