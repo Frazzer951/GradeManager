@@ -42,8 +42,8 @@ protected:
 
 TEST_F( SaveLoadTest, SaveLoad )
 {
-  saver::saveCourse( course, "test.course" );
-  Course loaded_course = saver::loadCourse( "test.course" );
+  saver::saveCourse( course, "test" );
+  Course loaded_course = saver::loadCourse( "test.json" );
 
   EXPECT_EQ( course, loaded_course );
 }
