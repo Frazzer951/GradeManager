@@ -17,7 +17,7 @@ script:
   - cmake .
   - cmake --build .
   - ctest
-  - ./script/get_code_cov.sh
+  - ./scripts/get_code_cov.sh
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
