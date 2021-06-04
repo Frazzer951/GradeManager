@@ -1,4 +1,4 @@
-#include "FMenu.hpp"
+#include "FMenu/FMenu.hpp"
 
 bool isNum( const std::string & str )
 {

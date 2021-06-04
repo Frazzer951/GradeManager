@@ -5,7 +5,7 @@
 
 #include "Course.hpp"
 #include "Save.hpp"
-#include "json.hxx"
+#include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 

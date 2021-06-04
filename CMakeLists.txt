@@ -10,11 +10,6 @@ include(ClangFormat)
 enable_testing()
 
 # Add all files from src/ folder
-set( Headers
-  src/Assignment.hpp
-  src/Course.hpp
-  src/Save.hpp
-)
 set( Sources
   src/Assignment.cpp
   src/Course.cpp
@@ -22,18 +17,17 @@ set( Sources
   src/main.cpp
 )
 
-include_directories(thirdparty)
-
-file(GLOB thirdparty_files
-     "thirdparty/*.cpp"
-     "thirdparty/*.hpp"
-     "thirdparty/*.hxx"
-)
-
-add_executable(${PROJECT_NAME} ${Sources} ${Headers} ${thirdparty_files} )
-add_library(${PROJECT_NAME}_lib STATIC ${Sources} ${Headers} ${thirdparty_files} )
-
+add_subdirectory(thirdparty)
 add_subdirectory(tests)
+
+include_directories(include)
+
+add_executable(${PROJECT_NAME} ${Sources} )
+target_link_libraries(${PROJECT_NAME} FMenu nlohmann_json::nlohmann_json)
+
+add_library(${PROJECT_NAME}_lib ${Sources} )
+target_include_directories(${PROJECT_NAME}_lib PUBLIC include)
+target_link_libraries(${PROJECT_NAME}_lib FMenu nlohmann_json::nlohmann_json)
 
 clangformat_setup(
   ${Sources}
