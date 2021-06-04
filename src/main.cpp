@@ -6,8 +6,9 @@
 
 #include "Assignment.hpp"
 #include "Course.hpp"
-#include "FMenu/FMenu.hpp"
 #include "Save.hpp"
+
+#include "FMenu/FMenu.hpp"
 
 Course course;
 
