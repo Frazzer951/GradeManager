@@ -1,3 +1,0 @@
-FMenu:
-	Menu will have a set of specified options
-	Each option will open either a sub menu, or call a function

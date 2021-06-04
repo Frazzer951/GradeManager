@@ -6,8 +6,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(ClangFormat)
+include(CPM)
 #set(CMAKE_CXX_CLANG_TIDY clang-tidy)
 enable_testing()
+
+CPMAddPackage("gh:Frazzer951/FMenu@1.0.1")
+CPMAddPackage("gh:ArthurSonzogni/nlohmann_json_cmake_fetchcontent@3.9.1")
 
 # Add all files from src/ folder
 set( Sources
@@ -17,7 +21,6 @@ set( Sources
   src/main.cpp
 )
 
-add_subdirectory(thirdparty)
 add_subdirectory(tests)
 
 include_directories(include)
