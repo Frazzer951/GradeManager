@@ -10,6 +10,7 @@ include(FetchContent)
 #set(CMAKE_CXX_CLANG_TIDY clang-tidy)
 enable_testing()
 
+# Download Third party Libraries
 FetchContent_Declare(
   fmenu
   GIT_REPOSITORY https://github.com/Frazzer951/FMenu.git
@@ -34,24 +35,34 @@ if(NOT json_POPULATED)
   add_subdirectory(${json_SOURCE_DIR} ${json_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
-# Add all files from src/ folder
-set( Sources
-  src/Assignment.cpp
-  src/Course.cpp
-  src/Save.cpp
-  src/main.cpp
-)
+# Create Libraries for each class to create a dependency tree
+add_library(assignment src/Assignment.cpp)
+target_include_directories(assignment PUBLIC include)
+
+add_library(course src/Course.cpp)
+target_include_directories(course PUBLIC include)
+target_link_libraries(course assignment)
+
+add_library(save src/Save.cpp)
+target_include_directories(save PUBLIC include)
+target_link_libraries(save assignment course nlohmann_json::nlohmann_json)
 
 add_subdirectory(tests)
 
-include_directories(include)
+add_executable(${PROJECT_NAME} src/main.cpp )
+target_link_libraries(${PROJECT_NAME} FMenu assignment course save)
 
-add_executable(${PROJECT_NAME} ${Sources} )
-target_link_libraries(${PROJECT_NAME} FMenu nlohmann_json::nlohmann_json)
-
-add_library(${PROJECT_NAME}_lib ${Sources} )
+add_library(${PROJECT_NAME}_lib src/main.cpp )
 target_include_directories(${PROJECT_NAME}_lib PUBLIC include)
-target_link_libraries(${PROJECT_NAME}_lib FMenu nlohmann_json::nlohmann_json)
+target_link_libraries(${PROJECT_NAME}_lib FMenu assignment course save)
+
+file(GLOB Sources
+     "src/*.cpp"
+)
+
+file(GLOB Headers
+     "include/*.hpp"
+)
 
 clangformat_setup(
   ${Sources}

@@ -10,10 +10,12 @@
 
 #include "FMenu/FMenu.hpp"
 
+// Global course variable that is used by the menu
 Course course;
 
 void loadCourse()
 {
+  // Load a course file with a specified filename
   while( true )
   {
     std::string filename;
@@ -34,6 +36,7 @@ void loadCourse()
 
 void save()
 {
+  // Save the current course to a file
   std::string filename;
 
   std::cout << "Enter the desired filename: ";
@@ -44,6 +47,7 @@ void save()
 
 void newCourse()
 {
+  // Create a new course
   std::string name;
   std::cout << "Please enter the name of your course: ";
   std::getline( std::cin, name );
@@ -53,6 +57,7 @@ void newCourse()
 
 void printVecOption( std::vector<std::string> vec )
 {
+  // Take a vector and print out all the values in a numbered format
   std::cout << "Chose from one of the below options:\n";
 
   for( int i = 0; i < vec.size(); i++ )
@@ -63,6 +68,7 @@ void printVecOption( std::vector<std::string> vec )
 
 int getChoice()
 {
+  // Get user input in the form of a number
   int index = -1;
   std::cout << "Enter Choice: ";
   std::cin >> index;
@@ -72,6 +78,7 @@ int getChoice()
 
 Assignment getAssignment( Course c )
 {
+  // Get a specific assignments from the user in the course
   std::vector<std::string> assignVec;
 
   for( auto & [name, assign] : c.assignments() )
@@ -87,6 +94,7 @@ Assignment getAssignment( Course c )
 
 std::string getCategory( Course c )
 {
+  // Get a specific category from the user in the course
   std::vector<std::string> catVec;
 
   for( auto & [name, assign] : c.categories() )
@@ -102,6 +110,7 @@ std::string getCategory( Course c )
 
 void addAssign()
 {
+  // Create and add a new assignment
   std::string a_name;
   std::string a_cat;
   double      a_score     = 0.0;
@@ -124,12 +133,14 @@ void addAssign()
 
 void removeAssignment()
 {
+  // Remove a user specified assignment
   Assignment assign = getAssignment( course );
   course.removeAssignment( assign.name() );
 }
 
 void editAssignment()
 {
+  // Edit an existing assignment
   Assignment assign = getAssignment( course );
 
   while( true )
@@ -189,6 +200,7 @@ void editAssignment()
 
 void addCategory()
 {
+  // Add a new category to the course
   std::string c_name;
   double      c_weight = 0.0;
 
@@ -204,12 +216,14 @@ void addCategory()
 
 void removeCategory()
 {
+  // Remove a category from the course
   std::string category = getCategory( course );
   course.removeCategory( category );
 }
 
 void editCategory()
 {
+  // Edit and existing category
   double      c_weight = 0.0;
   std::string category = getCategory( course );
 
@@ -221,31 +235,38 @@ void editCategory()
   course.editCategory( category, c_weight );
 }
 
+// Print the current grade of the course
 void printGrade() { course.calcGrade(); }
 
 int main()
 {
+  // Create menu that will get course object
   FMenu init_menu( "Get Course" );
   init_menu.addMenuOption( menuOption( "Load", "Load an existing course", loadCourse ) );
   init_menu.addMenuOption( menuOption( "New", "\tCreate a new course", newCourse ) );
 
+  // Define the basic course menu
   FMenu main_menu( "Course Menu" );
   main_menu.addMenuOption( menuOption( "Save Course", "Save the course to a file", save ) );
   main_menu.addMenuOption( menuOption( "Get Grade", "Print out the current grade for this course", printGrade ) );
 
+  // Define the assignment menu
   FMenu assignment_menu( "Assignment Menu" );
   assignment_menu.addMenuOption( menuOption( "Add", "\tAdd a new Assignment", addAssign ) );
   assignment_menu.addMenuOption( menuOption( "Remove", "Remove an Assignment", removeAssignment ) );
   assignment_menu.addMenuOption( menuOption( "Edit", "Edit an Assignment", editAssignment ) );
 
+  // Define the category menu
   FMenu category_menu( "Category Menu" );
   category_menu.addMenuOption( menuOption( "Add", "\tAdd a new Category", addCategory ) );
   category_menu.addMenuOption( menuOption( "Remove", "Remove a Category", removeCategory ) );
   category_menu.addMenuOption( menuOption( "Edit", "Edit a Category", editCategory ) );
 
+  // Add the submenus
   main_menu.addSubMenu( assignment_menu );
   main_menu.addSubMenu( category_menu );
 
+  // Run the get course menu, then start the main menu
   init_menu.runMenu();
   main_menu.runMenuContinuous();
 }
